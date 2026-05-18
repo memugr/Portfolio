@@ -1,18 +1,22 @@
 @font-face {
     font-family: 'Space Grotesk';
     src: url('../fonts/SpaceGrotesk.ttf') format('truetype');
+    font-weight: 100 900;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Inter';
     src: url('../fonts/Inter.ttf') format('truetype');
     font-weight: 100 900;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'JetBrains Mono';
     src: url('../fonts/JetBrainsMono.ttf') format('truetype');
     font-weight: 100 900;
+    font-display: swap;
 }
 
 /* ── Variables ── */
@@ -60,8 +64,8 @@ body {
 }
 
 .logo {
-    height: 24px;
-    width: auto;
+    height: 30px;
+    width: 110px;
     display: block;
     user-select: none;
 }
@@ -91,7 +95,6 @@ body {
 }
 
 @keyframes blink {
-
     0%,
     100% {
         opacity: 1;
@@ -138,6 +141,13 @@ body {
     color: var(--dark);
     text-align: center;
     word-break: break-all;
+}
+
+.folder-download {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--dark);
+    letter-spacing: 0.08em;
 }
 
 /* hint — visible only on hover */
@@ -228,7 +238,6 @@ body {
 }
 
 @keyframes pulse {
-
     0%,
     100% {
         opacity: 1;
@@ -271,7 +280,7 @@ body {
     }
 
     50% {
-        transform: translateY(-5px);
+        transform: translateY(-10px);
     }
 }
 
@@ -301,5 +310,15 @@ body {
 
     .folder-name {
         font-size: 12px;
+    }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .cat-svg, .dot, .cursor {
+        animation: none;
+    }
+    .folder {
+        transition: none;
     }
 }
