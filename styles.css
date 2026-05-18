@@ -81,7 +81,7 @@ body {
     padding: 80px 24px 80px;
 }
 
-/* ── Tagline ── */
+/* ── Footer ── */
 .tagline {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
@@ -150,57 +150,210 @@ body {
     letter-spacing: 0.08em;
 }
 
-/* hint — visible only on hover */
-.folder-hint {
+.folder:hover {
+    opacity: 1;
+}
+
+/* ── Modal overlay ── */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal {
+    background: var(--cream);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1.5px solid var(--dark);
+}
+
+/* ── Title bar ── */
+.modal-titlebar {
+    background: var(--purple);
+    padding: 0 10px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    cursor: default;
+}
+
+.modal-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: 0.08em;
+}
+
+.modal-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.modal-btn {
+    width: 22px;
+    height: 18px;
+    border: 1.5px solid var(--dark);
+    border-radius: 1px;
+    font-size: 11px;
+    cursor: pointer;
+    background: var(--purple);
+    color: var(--dark);
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.modal-btn.close {
+    background: var(--purple);
+    border-color: var(--dark);
+    color: var(--dark);
+    font-size: 1em;
+}
+
+/* Cos */
+.modal-body {
+    flex: 1;
+    padding: 28px 24px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--purple) var(--cream);
+}
+
+/* ── Scrollbar ── */
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--purple);
+    border-radius: 0;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--mid);
+}
+
+.modal-heading {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: 16px;
+}
+
+.modal-body p {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.7;
+    max-width: 60ch;
+}
+
+/* ── Skills ── */
+.skills {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.skills-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 10px;
+    border-top: 2px solid var(--purple);
+}
+
+.skills-title {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+
+.skills-list img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.skill-tag {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: var(--mid);
-    opacity: 0;
-    transition: opacity .15s;
+    font-weight: 700;
+    color: var(--dark);
+    background: var(--purple);
+    padding: 4px 8px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
 }
 
-.folder:hover .folder-hint {
-    opacity: 1;
+/* ── Footer bar ── */
+.modal-footer {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--dark);
+    padding: 6px 16px;
+    border-top: 1px solid var(--dark);
+    background: var(--cream);
+    flex-shrink: 0;
+    display: flex;
+    letter-spacing: 0.06em;
 }
 
-/* arrow */
-.arrow {
-    font-size: 18px;
-    color: var(--purple);
-    opacity: 0;
-    transition: opacity .15s, transform .15s;
-}
+/* ── Escriptori: finestra flotant ── */
+@media (min-width: 768px) {
+    .modal {
+        width: 620px;
+        height: auto;
+        max-height: 80vh;
+        border-radius: 0;
+        box-shadow: 6px 6px 0px rgba(24, 15, 47, 0.4);
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 
-.folder:hover .arrow {
-    opacity: 1;
-    transform: translateX(3px);
-}
+    .modal-titlebar {
+        cursor: grab;
+    }
 
-/* ── Colour variants ── */
-.folder.readme::before {
-    background: var(--yellow);
-}
-
-.folder.readme:hover {
-    border-color: var(--yellow);
-    box-shadow: 0 4px 20px rgba(247, 239, 162, .2);
-}
-
-.folder.readme .arrow {
-    color: var(--yellow);
-}
-
-.folder.game::before {
-    background: var(--pink);
-}
-
-.folder.game:hover {
-    border-color: var(--pink);
-    box-shadow: 0 4px 20px rgba(255, 122, 158, .15);
-}
-
-.folder.game .arrow {
-    color: var(--pink);
+    .modal-titlebar:active {
+        cursor: grabbing;
+    }
 }
 
 /* ── Taskbar ── */
