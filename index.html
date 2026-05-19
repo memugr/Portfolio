@@ -8,7 +8,7 @@
         content="C:/MEI és el portafolis personal, on es pot trobar projectes, contactes i un joc 2D." />
     <meta name="author" content="Mei Ying Mullen" />
     <title>C:/MEI</title>
-    <link rel="icon" href="img/isotip.png" type="image/png" />
+    <link rel="icon" type="image/png" href="img/isotip.png" />
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -20,26 +20,33 @@
     <main class="desktop" aria-label="Escriptori">
         <div class="folders">
 
-            <a class="folder" href="#" onclick="openModal(); return false;" aria-label="Obrir README.md">
+            <a class="folder" href="#" onclick="openModal('modal-readme'); return false;" aria-label="Obrir README.md">
                 <img src="img/folder.webp" alt="carpeta" loading="lazy" />
                 <span class="folder-name">README.md</span>
             </a>
 
-            <a class="folder" href="projectes.html" aria-label="Obrir PROJECTES/">
+            <a class="folder" href="#" onclick="openModal('modal-projectes'); return false;"
+                aria-label="Obrir PROJECTES/">
                 <img src="img/folder.webp" alt="carpeta" loading="lazy" />
                 <span class="folder-name">PROJECTES/</span>
             </a>
 
-            <a class="folder game" href="https://github.com/memugr/animal_escape/archive/refs/tags/1.0.zip"
+            <a class="folder" href="#" onclick="openModal('modal-game'); return false;"
                 aria-label="Zip del joc Animal Escape" title="Descarrega el joc!">
                 <img src="img/folder.webp" alt="carpeta" loading="lazy" />
                 <span class="folder-name">animal_escape.exe</span>
-                <span class="folder-download">↓ descarrega</span>
             </a>
 
-            <a class="folder" href="contacte.html" aria-label="Obrir CONTACTE/">
+            <a class="folder" href="#" onclick="openModal('modal-contacte'); return false;"
+                aria-label="Obrir CONTACTE/">
                 <img src="img/folder.webp" alt="carpeta" loading="lazy" />
                 <span class="folder-name">CONTACTE/</span>
+            </a>
+
+            <a class="folder" href="resources/manual_identitat.pdf" target="_blank"
+                aria-label="Enllaç extern a manual_identitat.pdf">
+                <img class="folder" src="img/pdf.svg" alt="pdf" loading="lazy" />
+                <span class="folder-name">manual_identitat.pdf</span>
             </a>
 
         </div>
@@ -55,13 +62,13 @@
     </footer>
 
     <div class="modal-overlay" id="modal-readme">
-        <div class="modal" id="modal-window">
+        <div class="modal">
 
             <!-- Title bar -->
-            <div class="modal-titlebar" id="modal-drag">
+            <div class="modal-titlebar">
                 <span class="modal-title">README.md</span>
                 <div class="modal-controls">
-                    <button class="modal-btn close" aria-label="Tancar" onclick="closeModal()">✕</button>
+                    <button class="modal-btn close" aria-label="Tancar" onclick="closeModal('modal-readme')">✕</button>
                 </div>
             </div>
 
@@ -78,8 +85,12 @@
                     gaudint d’aprendre dels altres i de col·laborar per assolir objectius comuns.
                     Afronto cada projecte amb dedicació, calma i una actitud oberta i positiva.
                     <br><br>
-                    El gat de l'escriptori és el meu company de treball. Es diu Ziggy, i és un gatet tranquil, curiós i molt mimós. 
-                    M'ajuda a mantenir la calma i a recordar que el treball ha de ser una font de satisfacció i no d'estrès.
+                    El gat de l'escriptori és el meu company de treball. Es diu Ziggy, i és un gatet tranquil, curiós i
+                    molt mimós.
+                    M'ajuda a mantenir la calma i a recordar que el treball ha de ser una font de satisfacció i no
+                    d'estrès. La meva missió ha siguit crear un espai digital i interactiu que presenti el meu portfolio
+                    juntament amb en Ziggy com a personatge principal de guia per convidar a l'usuari a explorar els
+                    meus projectes i el joc 2D que he desenvolupat.
                 </p>
 
                 <!-- Skills -->
@@ -122,6 +133,67 @@
             <div class="modal-footer">
                 PATH: C:/MEI/README.md
             </div>
+        </div>
+    </div>
+
+    <!-- PROJECTES -->
+    <div class="modal-overlay" id="modal-projectes">
+        <div class="modal">
+            <div class="modal-titlebar">
+                <span class="modal-title">PROJECTES/</span>
+                <div class="modal-controls">
+                    <button class="modal-btn close" aria-label="Tancar"
+                        onclick="closeModal('modal-projectes')">✕</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h1 class="modal-heading">Projectes</h1>
+                <p></p>
+            </div>
+            <div class="modal-footer">PATH: C:/MEI/PROJECTES/</div>
+        </div>
+    </div>
+
+    <!-- JOC -->
+    <div class="modal-overlay" id="modal-game">
+        <div class="modal">
+            <div class="modal-titlebar">
+                <span class="modal-title">animal_escape.exe</span>
+                <div class="modal-controls">
+                    <button class="modal-btn close" aria-label="Tancar" onclick="closeModal('modal-game')">✕</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h1 class="modal-heading">Animal Escape</h1>
+                <img class="img-game" src="img/screenshot.png" alt="Captura d'Animal Escape">
+                <a class="btn-download" href="https://github.com/memugr/animal_escape/archive/refs/tags/1.0.zip">
+                    ↓ descarrega
+                </a>
+                <p>Joc 2D desenvolupat en Java amb Swing al mòdul de Programació.
+                    Controla el teu animal i travessa la pantalla sense ser atrapat pel monstre.
+                    Mou-te amb les tecles ← ↑ ↓ →, recull monedes per sumar punts (+2) i evita els obstacles per no
+                    perdre'n (-1).
+                    Arriba a la franja verda de l'altre costat abans que el monstre t'atrapi. Comences amb 3 vides.</p>
+            </div>
+            <div class="modal-footer">PATH: C:/MEI/animal_escape.exe</div>
+        </div>
+    </div>
+
+    <!-- CONTACTE -->
+    <div class="modal-overlay" id="modal-contacte">
+        <div class="modal">
+            <div class="modal-titlebar">
+                <span class="modal-title">CONTACTE/</span>
+                <div class="modal-controls">
+                    <button class="modal-btn close" aria-label="Tancar"
+                        onclick="closeModal('modal-contacte')">✕</button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h1 class="modal-heading">Contacte</h1>
+                <p></p>
+            </div>
+            <div class="modal-footer">PATH: C:/MEI/CONTACTE/</div>
         </div>
     </div>
 

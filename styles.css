@@ -75,7 +75,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     gap: 20px;
     padding: 80px 24px 80px;
@@ -130,7 +130,7 @@ body {
 }
 
 .folder img {
-    width: 96px;
+    width: 50px;
     height: auto;
 }
 
@@ -166,6 +166,13 @@ body {
 
 .modal-overlay.open {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.modal-overlay.open .modal {
+    pointer-events: all;
 }
 
 .modal {
@@ -356,7 +363,37 @@ body {
     }
 }
 
-/* ── Taskbar ── */
+/* Game */
+.img-game {
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--dark);
+    border-radius: 2px;
+}
+
+.btn-download {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--dark);
+    background: var(--yellow);
+    padding: 8px 16px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+    width: fit-content;
+    margin: 20px auto 0;
+    margin-bottom: 20px;
+    border: 1px solid var(--dark);
+}
+
+.btn-download:hover {
+    opacity: 0.85;
+}
+
+/* ── Footer ── */
 .taskbar {
     position: fixed;
     bottom: 0;
