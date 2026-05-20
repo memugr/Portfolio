@@ -124,7 +124,7 @@ catWrap.addEventListener('click', () => {
             bubble.classList.add('visible');
 
             clearTimeout(msgTimeout);
-            msgTimeout = setTimeout(() => { bubble.classList.remove('visible'); }, 2000);
+            msgTimeout = setTimeout(() => { bubble.classList.remove('visible'); }, 3000);
         }
     }
 });
