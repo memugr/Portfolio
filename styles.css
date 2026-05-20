@@ -27,7 +27,7 @@
     --mid: #7C7295;
     --yellow: #F7EFA2;
     --pink: #FF7A9E;
-    --white: #FCFCF7;
+    --white: #D4D4D4;
 }
 
 /* ── Reset ── */
@@ -327,6 +327,63 @@ body {
     letter-spacing: 0.05em;
 }
 
+/* ── Projects ── */
+.projects {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.project {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px 0;
+    border-top: 2px solid var(--purple);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.project-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: 0.04em;
+}
+
+.project-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--dark);
+    background: var(--yellow);
+    padding: 3px 8px;
+    border-radius: 3px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.project-link:hover {
+    opacity: 0.8;
+}
+
+.project-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+    max-width: 100%;
+}
+
 /* ── Footer bar ── */
 .modal-footer {
     font-family: 'JetBrains Mono', monospace;
@@ -347,7 +404,7 @@ body {
         height: auto;
         max-height: 80vh;
         border-radius: 0;
-        box-shadow: 6px 6px 0px rgba(24, 15, 47, 0.4);
+        box-shadow: 4px 4px 0px rgba(24, 15, 47, 0.4);
         position: absolute;
         top: 80px;
         left: 50%;
@@ -393,28 +450,101 @@ body {
     opacity: 0.85;
 }
 
+/* Contacte */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contact-info img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
 /* ── Footer ── */
 .taskbar {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 48px;
+    height: 52px;
     background: var(--dark);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 24px;
     border-top: 1px solid rgba(191, 166, 255, .15);
+    z-index: 100;
 }
 
 .path {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    color: var(--mid);
+    font-size: 14px;
+    color: var(--white);
     display: flex;
     align-items: center;
-    gap: 8px;
+    flex-direction: row;
+    gap: 0;
+    height: 50px;
+}
+
+#message-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: var(--white);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    opacity: 0;
+    line-height: normal;
+    max-width: 40vw;
+}
+
+@media (max-width: 480px) {
+    #message-cat {
+        font-size: 10px;
+        max-width: 30vw;
+    }
+}
+
+#message-cat.visible {
+    opacity: 1;
+    animation: type-msg .6s steps(var(--msg-steps), end) forwards;
+}
+
+@keyframes type-msg {
+    from { width: 0; }
+    to { width: var(--msg-width); }
+}
+
+/* ── Ziggy modal ── */
+.modal-body--terminal {
+    background: var(--cream);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.terminal-line {
+    font-family: 'JetBrains Mono', monospace !important;
+    font-size: 13px;
+    color: #D4D4D4;
+    max-width: 100%;
+}
+
+.terminal-error {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--pink);
+    font-weight: 900;
+    font-size: 30px;
+}
+
+.terminal-pending {
+    color: var(--yellow);
 }
 
 .dot {
@@ -425,6 +555,7 @@ body {
     box-shadow: 0 0 6px #4ADE80;
     display: inline-block;
     animation: pulse 2s ease-in-out infinite;
+    margin-right: 7px;
 }
 
 @keyframes pulse {
@@ -501,6 +632,26 @@ body {
     .folder-name {
         font-size: 12px;
     }
+
+    /* Taskbar */
+    .taskbar {
+        padding: 0 12px;
+    }
+
+    .path {
+        font-size: 10px;
+    }
+
+    #message-cat {
+        font-size: 10px;
+    }
+}
+
+.path-short { display: none; }
+
+@media (max-width: 480px) {
+    .path-full { display: none; }
+    .path-short { display: inline; }
 }
 
 /* ── Reduced motion ── */
