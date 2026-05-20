@@ -57,11 +57,20 @@ function makeDraggable(dragHandle, modalOverlay) {
     modalOverlay.addEventListener('mousedown', () => bringToFront(modalOverlay));
 }
 
-// Inicialitza cada modal 
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    const handle = overlay.querySelector('.modal-titlebar');
-    makeDraggable(handle, overlay);
-});
+// Carregar els modals
+const modals = ['readme', 'projectes', 'game', 'contacte', 'error'];
+const container = document.getElementById('modals-container');
+
+Promise.all(
+    modals.map(name =>
+        fetch(`modals/${name}.html`).then(res => res.text())
+    )
+).then(htmls => {
+    container.innerHTML = htmls.join('');
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        makeDraggable(overlay.querySelector('.modal-titlebar'), overlay);
+    });
+}).catch(err => console.error('Error carregant modals:', err));
 
 // ── Cat ──
 const catWrap = document.querySelector('.cat-container');
@@ -81,7 +90,6 @@ fetch('data/cat-messages.json')
         console.error('Error carregant missatges:', err);
         catMessagesDesktop = ["Meow!"];
         catMessagesMobile  = ["Meow!"];
-        openModal('modal-error');
     });
 
 function getMessages() {
