@@ -95,6 +95,7 @@ body {
 }
 
 @keyframes blink {
+
     0%,
     100% {
         opacity: 1;
@@ -516,8 +517,13 @@ body {
 }
 
 @keyframes type-msg {
-    from { width: 0; }
-    to { width: var(--msg-width); }
+    from {
+        width: 0;
+    }
+
+    to {
+        width: var(--msg-width);
+    }
 }
 
 /* ── Ziggy modal ── */
@@ -559,6 +565,7 @@ body {
 }
 
 @keyframes pulse {
+
     0%,
     100% {
         opacity: 1;
@@ -595,6 +602,7 @@ body {
 }
 
 @keyframes cat-idle {
+
     0%,
     100% {
         transform: translateY(0);
@@ -628,6 +636,25 @@ body {
     .folders {
         max-width: 100%;
     }
+
+    .modal-titlebar {
+        height: 45px;
+        padding: 0 8px;
+    }
+
+    .modal-title {
+        font-size: 15px;
+    }
+
+    .modal-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .modal-btn.close {
+        font-size: 1.4em;
+    }
+
 
     .folder-name {
         font-size: 12px;
